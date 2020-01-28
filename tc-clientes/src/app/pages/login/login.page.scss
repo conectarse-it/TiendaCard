@@ -1,0 +1,57 @@
+.mainSlide, .mainSlide ion-slide {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    width: 120px;
+}
+
+.pick-avatar {
+    width: 80px;
+    opacity: 0.3;
+}
+
+.pick-avatar-seleccionado {
+    transition: opacity 0.5s linear;
+    opacity: 1 !important;
+}
+
+ion-list {
+    display: contents !important;
+}
+
+.logo-tc {
+    width: 160px !important;
+    
+}
+
+.btns-login {
+
+    margin-top: 20px !important
+}
+
+.a-registro {
+    color: #ff7f00 !important;
+    font-weight: bolder;
+    font-size: 16px !important;
+    text-decoration-line: underline;
+    
+}
+
+.icono-add {
+    margin-right: 2px !important
+}
+
+.seleccion-avatar {
+    
+    margin-bottom: 20px !important
+}
+
+.btn-crear {
+    margin-bottom: 50px !important;
+}
+
+.subirForm {
+    margin-top: -110px !important;
+}

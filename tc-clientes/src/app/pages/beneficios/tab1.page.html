@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+
+
+<ion-content color="light" mode="ios" fullscreen>
+
+  <!-- REFRESHER -->
+  <ion-refresher slot="fixed" (ionRefresh)="recargar($event)" color="light">
+        <ion-refresher-content
+          color="light"
+          pullingIcon="arrow-dropdown"
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+      </ion-refresher>
+
+
+  <!-- POSTS -->
+  <app-posts [posts]="posts"></app-posts>
+
+
+    <!-- INFINITE SCROLL -->
+    <ion-infinite-scroll [disabled]="!habilitado" threshold="150px" (ionInfinite)="siguientes($event)">
+            <ion-infinite-scroll-content>
+            </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+  
+
+</ion-content>

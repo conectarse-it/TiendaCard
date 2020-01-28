@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+
+
+
+
+<ion-content color="light" mode="ios" fullscreen>
+
+<!-- REFRESHER -->
+<!-- <ion-refresher slot="fixed" (ionRefresh)="recargar($event)" color="light">
+      <ion-refresher-content
+        color="light"
+        pullingIcon="arrow-dropdown"
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+</ion-refresher> -->
+
+
+<!-- POSTS -->
+
+<ion-slides mode="ios" *ngIf="posts.length === 0">
+  <ion-slide >
+    <ion-label color="tc2">
+        
+        <h1>Sin Favoritos !!!</h1>
+        
+    </ion-label>
+    
+  </ion-slide>
+</ion-slides>
+
+<app-posts [posts]="posts" icono="true" *ngIf="posts.length > 0"></app-posts>
+
+</ion-content>
+

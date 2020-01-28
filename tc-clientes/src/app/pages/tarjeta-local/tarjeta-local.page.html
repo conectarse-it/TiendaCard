@@ -1,0 +1,53 @@
+<ion-header no-border translucent="false" mode="ios">
+  <ion-toolbar color="tc1" mode="ios" class="ion-text-center">               
+      
+
+      <img class="img-toolbar espacio-cabecera" src="../../../assets/logoBlanco.png" alt="" />
+    
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content mode="ios" fullscreen color="light">
+
+    <ion-slides mode="ios" *ngIf="usuario">
+        <ion-slide >
+
+           <ion-label color="tc2" class="ion-text-center">
+              
+              <div [ngClass]="{'tarjeta-fondo-classic': !prem, 'tarjeta-fondo-premium': prem }">
+                               
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <h4 class="nombreTarjeta ion-text-left"> {{usuario.nombre | uppercase}}  {{ usuario.apellido | uppercase}} </h4>
+                  <h4 class="numeroTarjeta ion-text-left">0000 0000 {{usuario.dni}}</h4>
+                  <p *ngIf="!prem" class="nombreComercio ion-text-right">Comercio: {{ comercio }}</p>
+
+              </div>
+              
+          </ion-label>
+          
+        </ion-slide>
+      </ion-slides>
+
+
+    
+          <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+              <ion-fab-button color="tc3">
+                <ion-icon name="settings"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-list side="start">
+                <ion-fab-button [disabled]="!habilitado" color="danger" (click)="eliminar()"><ion-icon name="trash"></ion-icon></ion-fab-button>
+                <ion-fab-button color="tc3" (click)="cerrar()"><ion-icon name="ios-arrow-back"></ion-icon></ion-fab-button>
+              </ion-fab-list>
+            </ion-fab>
+          
+
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "TiendaCard",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,70 @@
+ion-slides, ion-slide {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+.tarjeta-fondo-classic {
+    height: 250px;
+    width: 400px;
+    margin-left: -18px !important;
+    margin-right: 24px;
+    background: url('../../../assets/tarjetaClassic.jpeg') !important;
+    
+    
+}
+
+.tarjeta-fondo-premium {
+    height: 250px;
+    width: 400px;
+    margin-left: -18px !important;
+    margin-right: 24px;
+    background-image: url('../../../assets/tarjetaPremium.jpeg')  !important;
+}
+
+.infoTarjeta {
+    text-align: left !important;
+    margin-left: 22px;
+}
+
+.numeroTarjeta {
+    font-size: 18px !important;
+    color: aliceblue;
+    margin-left: 20px !important;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.nombreTarjeta{
+    font-size: 22px !important;
+    color: aliceblue;
+    margin-left: 20px !important;
+    margin-top: 3px !important;
+    font-weight: 900;
+}
+
+.nombreComercio {
+    margin-right: 20px !important;
+    color: aliceblue;
+    font-size: 14px !important;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+
+.img-toolbar {
+    height: 40px !important;
+    width: 25% !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+    margin-left: 8px !important
+  }
+
+  .qr {
+      height: 100% !important;
+      width: 80% !important;
+      margin-top: 35px !important;
+    //   margin-right: -8px !important;
+       margin-left: 8px !important;
+
+  }

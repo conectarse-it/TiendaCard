@@ -1,0 +1,58 @@
+
+<div class="animated fadeIn slow  post">
+
+  <ion-item lines="none">
+  
+    <ion-avatar slot="start">
+        <img src="/assets/avatars/{{ post.comercio.avatar }}" />
+    </ion-avatar>
+
+    <!-- <ion-avatar slot="start">
+        <img src="../../../assets/avatars/gus.jpg" />
+    </ion-avatar> -->
+
+
+
+    <ion-label color="tc2">
+
+        <h3>{{ post.comercio.razonSocial }}</h3>
+        <h5> {{ post.comercio.email }} </h5>
+
+    </ion-label>
+
+  </ion-item>
+
+  <ion-slides mode="ios" pager="true" *ngIf="post.imgs.length > 1">
+
+      <ion-slide  *ngFor="let img of post.imgs"
+                  class="image-slide"
+                  [style]=" ( img | imagen:  post.comercio._id ) | domSanitizer">    
+      </ion-slide>
+  
+  </ion-slides>
+
+  <ion-slides mode="ios" *ngIf="post.imgs.length === 1" [options]="slidesSoloOpts">
+      
+      <ion-slide  class="image-slide"
+                  [style]=" ( post.imgs[0] | imagen:  post.comercio._id ) | domSanitizer">    
+      </ion-slide>
+
+  </ion-slides>
+
+  <!-- Mapa -->
+  <app-mapa [coords]="post.coords" *ngIf="post.coords"></app-mapa>
+
+
+  <ion-item lines="none">
+    <ion-icon slot="start" [name]="corazon" color="danger" (click)="favoritoManejo()"></ion-icon>
+    <ion-icon slot="end" name="md-share" color="tc3" (click)="compartir()"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="ion-text-wrap" color="tc2">
+        {{ post.mensaje }}
+    </ion-label>
+  </ion-item>
+
+
+</div>

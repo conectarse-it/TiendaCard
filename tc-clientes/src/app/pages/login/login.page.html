@@ -1,0 +1,259 @@
+<ion-header no-border translucent="false" mode="ios">
+    <ion-toolbar color="tc2" mode="ios">
+                
+        <div class="espacio-cabecera ion-text-left" >
+          <img class="img-toolbar logo-tc" src="../../../assets/logoBlanco.png" alt="" />
+        </div>
+
+        <ion-buttons slot="end" color="tc1" class="espacio-cabecera">
+            <ion-button (click)="mostrarLogin()" slot="start" color="tc1" *ngIf="btnAtras" > <ion-icon name="ios-arrow-back"></ion-icon> Atras</ion-button>
+            
+         </ion-buttons>
+
+  
+      
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content color="light" forceOverscroll="true" >
+   <ion-slides class="mainSlide" #slidePrincipal>
+
+           
+      <ion-slide>
+  
+        <form (ngSubmit)="login( fLogin )" #fLogin="ngForm">
+          <ion-grid fixed>
+  
+            <ion-row>
+              <ion-col>
+                <img src="/assets/avatars/av-1.png">
+              </ion-col>
+            </ion-row>
+          
+            <ion-row color="light">
+              <ion-col>
+                
+                  <ion-list color="light">
+                    
+                    <ion-item color="light">
+                      <!-- <ion-label >DNI</ion-label> -->
+                      <ion-input  class="ion-text-center"
+                                  name="dni"
+                                  placeholder="Ingrese su DNI"
+                                  type="number"
+                                  [(ngModel)]="loginUser.dni"
+                                  required
+                                  minlength=7
+                                  ></ion-input>
+                    </ion-item>
+  
+                    <ion-item color="light">
+                      <!-- <ion-label>Password</ion-label> -->
+                      <ion-input  name="password"
+                                  class="ion-text-center"
+                                  placeholder="Password"
+                                  type="password"
+                                  minlength=6
+                                  [(ngModel)]="loginUser.password"
+                                  required></ion-input>
+                    </ion-item>
+  
+                  </ion-list>
+              </ion-col>
+            </ion-row>
+  
+            <ion-row class="btns-login">
+              <ion-col>
+                <ion-button *ngIf="puedeLogin"
+                            type="submit"
+                            color="tc1"
+                            shape="round"
+                            size="large"
+                            expand="block"
+                            [disabled]="!puedeLogin || cargando || !fLogin.valid"
+                            >
+                  <ion-icon slot="start" name="key"></ion-icon>
+                  Ingresar
+                </ion-button>
+
+                <ion-button *ngIf="!puedeLogin"
+                type="button"
+                color="tc1"
+                shape="round"
+                size="large"
+                expand="block"
+                (click)="prueboConexion()"
+                >
+                  <ion-icon slot="start" name="key"></ion-icon>
+                  Reintentar
+                  </ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                  <ion-button *ngIf="!sinTarjeta"
+                              type="button"
+                              color="tc3"
+                              shape="round"
+                              size="large"
+                              expand="block"
+                              (click)="tarjetaLocal()"
+                              [disabled]="cargando || sinTarjeta"
+                              >
+                    <ion-icon slot="start" name="card"></ion-icon>
+                    MI Tarjeta 
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+
+              <br>
+              <br>
+              <ion-row>
+                  <ion-col>
+                      <a    (click)="mostrarRegistro()"
+                            class="a-registro"
+                            *ngIf="puedeLogin">
+                            <ion-icon slot="start" name="person-add" class="icono-add"></ion-icon>
+                          REGISTRARME
+                      </a>
+                  </ion-col>  
+              
+              </ion-row>
+               
+  
+          </ion-grid>
+        </form>
+      
+  
+  
+      </ion-slide>
+  
+      <ion-slide>
+  
+        
+        <ion-grid fixed>
+  
+             <!-- Avatar Selecto -->
+            
+              <div class="seleccion-avatar" *ngIf="!visibleForm">
+              <app-avatar-selector (avatarSel)="registerUser.avatar = $event"></app-avatar-selector>
+              </div>
+          
+              <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm" [ngClass]="{'subirForm': visibleForm}">
+                  <ion-row >
+                      <ion-col color="tc1">
+                          
+                          <ion-list color="tc1">
+                              
+                              <ion-item color="light" (click)="scrollListVisible()">
+                                  <!-- <ion-label>DNI</ion-label> -->
+                                  <ion-input  class="ion-text-center" name="dni" 
+                                              placeholder="Ingrese su DNI"
+                                              type="number"
+                                              [(ngModel)]="registerUser.dni"
+                                              minlength=7
+                                              required></ion-input>
+                              </ion-item>
+  
+                              <ion-item color="light" (click)="scrollListVisible()">
+                              <!-- <ion-label>Nombre</ion-label> -->
+                              <ion-input  #inputNombre class="ion-text-center"
+                                          name="Ingrese su Nombre"
+                                          type="text"
+                                          placeholder="Nombre"
+                                          [(ngModel)]="registerUser.nombre"
+                                          minlength=2
+                                          required></ion-input>
+                              </ion-item>
+                              
+                              <ion-item color="light" (click)="scrollListVisible()">
+                                  <!-- <ion-label>Apellido</ion-label> -->
+                                  <ion-input name="apellido" class="ion-text-center"
+                                              type="text"
+                                              placeholder="Ingrese su Apellido"
+                                              [(ngModel)]="registerUser.apellido"
+                                              minlength=2
+                                              required></ion-input>
+                                  </ion-item>
+  
+                              
+                                  <ion-item color="light" (click)="scrollListVisible()">
+                                      <!-- <ion-label>Email</ion-label> -->
+                                      <ion-input name="email" class="ion-text-center"
+                                                  type="email"
+                                                  placeholder="Ingrese su Email"
+                                                  [(ngModel)]="registerUser.email"
+                                                  required></ion-input>
+                                    </ion-item>
+                              
+                              <ion-item color="light" (click)="scrollListVisible()">
+                              <!-- <ion-label>Password</ion-label> -->
+                              <ion-input name="password" class="ion-text-center"
+                                          placeholder="Password - al menos 6 caracteres"
+                                          type="password"
+                                          [(ngModel)]="registerUser.password"
+                                          minlength=6
+                                          required></ion-input>
+                              
+                              </ion-item>
+
+                              <ion-item color="light" (click)="scrollListVisible()">
+                                  <!-- <ion-label>Repetir Password</ion-label> -->
+                                  <ion-input name="password" class="ion-text-center"
+                                             type="password"
+                                             minlength=5
+                                             placeholder="Repetir Password"
+                                             [(ngModel)]="repitePass"
+                                             (ionInput)="validarPass( fRegistro )"
+                                             required></ion-input>
+                              </ion-item>
+
+                              <ion-item color="light">
+                                <ion-label>Seleccione Comercio</ion-label>
+                                <ion-select [(ngModel)]="registerUser.comercio" name="comercio" (ionChange)="validoForm()">
+                                  <ion-select-option *ngFor="let comercio of comercios" [value]="comercio._id">{{comercio.razonSocial}}</ion-select-option>
+                                </ion-select>
+                              </ion-item>
+  
+                          </ion-list>
+                      </ion-col>
+                  </ion-row>
+                  
+                  <ion-row>
+                  <ion-col>
+                      <ion-button type="submit"
+                                  color="tc1"
+                                  expand="block"
+                                  size="large"
+                                  [disabled]="cargando || !fRegistro.valid || !selComercio"
+                                  shape="round"
+                                  class="btn-crear">
+                          <ion-icon slot="start" name="person-add"></ion-icon>
+                          Crear usuario
+                      </ion-button>
+                  </ion-col>
+                  </ion-row>
+                  <br>
+                                
+              </form>
+
+              
+          </ion-grid>
+    
+    
+        </ion-slide>
+  
+  
+    </ion-slides>
+  
+
+    
+  
+  
+  </ion-content>
+
+
+ 

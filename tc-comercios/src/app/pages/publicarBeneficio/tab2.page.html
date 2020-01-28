@@ -1,0 +1,80 @@
+<ion-header no-border translucent="true" mode="ios">
+  <ion-toolbar color="light" mode="ios" class="ion-text-left">               
+      
+      <img class="img-toolbar" src="../../../assets/logoNegro.png" alt="" />
+    
+  </ion-toolbar>
+
+</ion-header>
+  
+  <ion-content class="ion-padding" color="light">
+  
+    <div class="ion-text-center titulo-nuevo-post">
+      <h1>NUEVA PUBLICACION</h1>
+    </div>
+    <div class="post nuevo-post">
+    <ion-list color="light">
+      
+      <ion-item color="light" class="margen-superior">
+        <ion-label position="floating">Mensaje</ion-label>
+        <ion-textarea [(ngModel)]="post.mensaje"> </ion-textarea>
+      </ion-item>
+  
+      <ion-list>
+        <ion-item color="light" class="margen-superior">
+          <ion-label>Posición actual</ion-label>
+          <ion-spinner color="tc1" name="lines-small"
+                        *ngIf="cargandoGeo"></ion-spinner>
+          <ion-toggle color="tc1" slot="end"
+                        [(ngModel)]="post.posicion"
+                        (ionChange)="getGeo()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+    
+  
+  
+    </ion-list>
+    
+  
+    
+    <ion-row>
+      <ion-col size="6">
+        <ion-button class="margen-superior botones-margenes"
+                    color="tc1"
+                    expand="full"
+                    shape="round"
+                    (click)="camara()">
+          <ion-icon slot="start" name="camera"></ion-icon>
+          Cámara
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button class="margen-superior botones-margenes"
+                    expand="full"
+                    color="tc1"
+                    shape="round"
+                    (click)="libreria()">
+          <ion-icon slot="start" name="images"></ion-icon>
+          Galería
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+    
+  
+    <ion-row>
+      <ion-col size="3" *ngFor="let image of tempImages">
+        <ion-card>
+          <img [src]="image">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-fab horizontal="center" vertical="bottom" slot="fixed">
+        <ion-fab-button   color="tc1" 
+                          (click)="crearPost()"
+                          [disabled]="post.mensaje.length < 1 || cargandoGeo || cargandoPost ">
+          <ion-icon name="cloud-done" ></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
